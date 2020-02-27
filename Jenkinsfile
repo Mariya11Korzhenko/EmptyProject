@@ -1,4 +1,3 @@
-node ('master'){
 pipeline {
   agent {
     // this image provides everything needed to run Cypress
@@ -65,5 +64,4 @@ pipeline {
       sh 'pkill -f http-server'
     }
   }
-}
 }
