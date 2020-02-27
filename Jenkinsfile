@@ -2,7 +2,7 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
-      image 'cypress/base:10'
+      image 'cypress/base:12.6.0'
     }
   }
 
@@ -10,9 +10,6 @@ pipeline {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
       steps {
-        // there a few default environment variables on Jenkins
-        // on local Jenkins machine (assuming port 8080) see
-        // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm ci'
         sh 'npm run cy:verify'
@@ -21,7 +18,7 @@ pipeline {
 
     stage('start local server') {
       steps {
-        sh 'npm run serve'
+        sh 'nohup npm run start:ci &'
       }
     }
 
