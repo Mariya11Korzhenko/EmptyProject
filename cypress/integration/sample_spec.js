@@ -29,7 +29,7 @@ describe('My First Test', function() {
 //
   })
 
-    it('Add New Board site', ()=> {
+    it.skip('Add New Board site', ()=> {
   // Navigate
          cy.visit('https://trello.com/')
          cy.url().should('include', 'trello.com')
