@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('My First Test', function() {
-     it.skip('Visits the Fun Retro site - Free trial', function() {
+     it('Visits the Fun Retro site - Free trial', function() {
       cy.visit('https://funretro.io/')
       cy.get('.home-info .home-button-link').click()
       cy.url().should('include', '/pricing')
