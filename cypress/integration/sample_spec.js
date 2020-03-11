@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('My First Test', function() {
-  it('Visits the Fun Retro site', function() {
+     it.skip('Visits the Fun Retro site - Free trial', function() {
       cy.visit('https://funretro.io/')
       cy.get('.home-info .home-button-link').click()
       cy.url().should('include', '/pricing')
@@ -14,63 +14,29 @@ describe('My First Test', function() {
       //click the checkboxes
       const listOfIds = ['#accept-terms', '#accept-subs']
       listOfIds.forEach(id => cy.get(id).click())
-
-//      cy.contains('Google Login').click()
-//      cy.get('[autocomplete="username"]').type('fake@email.com')
-//       it('cy.window() - get the global window object', () => {
-//          // https://on.cypress.io/window
-//          cy.window().should('have.property', 'top')
-//        })
-//
-//
-//      cy.get('.action-email')
-//      .type('fake@email.com')
-//      .should('have.value', 'fake@email.com')
-//
-  })
-
-    it.skip('Add New Board site', ()=> {
-  // Navigate
-         cy.visit('https://trello.com/')
-         cy.url().should('include', 'trello.com')
-         cy.get('[href="/login"]').click()
-         cy.url().should('include', '/login')
-
-  // Google account login
-         cy.get('#google-link').click()
-         cy.url().should('include', 'mary_korzhenko/boards')
-
-  // Filter and navigate to the Retrospective Automation board
-
-      cy.get('.board-tile.mod-add').click()
-      cy.get('.create-board-form').should('be.visible')
-      cy.get('.create-board-form').within(() => {
-      const listOfIds = cy.get('.background-grid').find('li')
-      listOfIds.should('have.length',9)
-
-
-      cy.get('[data-test-id="create-board-title-input"]')
-           .type('fake@email.com').should('have.value', 'fake@email.com')
-             .clear()
-                 .should('have.value', '')
-                  .type('AutoTestBoard').should('have.value', 'AutoTestBoard')
-
-      cy.get('.subtle-chooser-trigger').click()
       })
-      cy.get('.pop-over-content').find('ul').find('li:last').click()
-      cy.get('.public-confirmation-button').find('[type="submit"]').click()
-      cy.get('[data-test-id="create-board-submit-button"]').click()
 
-      cy.wait(2000)
-      cy.get('.board-menu-header-back-button', ).click()
-      cy.get('.js-open-more').click()
-      cy.get('.js-close-board').click()
-      cy.get('.js-confirm[type="submit"]').click()
+     it('Visits the Fun Retro site - Team', function() {
+         cy.visit('https://funretro.io/')
+         cy.get('.home-info .home-button-link').click()
+         cy.url().should('include', '/pricing')
+         cy.get('.pricing-title').contains('Try FunRetro with a 14 day free trial with paid plans')
 
+         cy.get('.ng-untouched.ng-valid').should('have.class', 'ng-empty').should('not.have.class', 'ng-not-empty')
+         cy.get('#MaterialToggleRed').check({force: true})
 
-    //    'Logout'
-        cy.get('[data-test-id=header-member-menu-button').click()
-        cy.get('[data-test-id=header-member-menu-logout').should('be.visible').click()
-        cy.get('[data-track-group="Logged Out"]').should('be.visible')
+         cy.get('.pricing-title.ng-binding').contains('Two months for free with annual paid plans')
+         cy.get('.ng-untouched.ng-valid').should('have.class', 'ng-not-empty').should('not.have.class', 'ng-empty')
+
+         cy.get('.tiers').within(() => {
+         cy.get('div.tier').should('have.length', 4).eq(1).find('.pricing-button').click()
          })
+
+         cy.get('.swal2-popup').should('be.visible')
+         const listOfIds = ['#accept-terms', '#accept-subs']
+         listOfIds.forEach(id => cy.get(id).click())
+
+         cy.get('.swal2-close').click()
+         cy.get('.swal2-popup').should('not.be.visible')
+})
 })
