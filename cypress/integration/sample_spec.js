@@ -38,5 +38,6 @@ describe('My First Test', function() {
 
          cy.get('.swal2-close').click()
          cy.get('.swal2-popup').should('not.be.visible')
+
 })
 })
