@@ -12,6 +12,7 @@ describe('My First Test', function() {
       cy.get('.home-button-secondary').click();
 
       //click the checkboxes
+      cy.wait(1000);
       const listOfIds = ['#accept-terms', '#accept-subs'];
       listOfIds.forEach(id => cy.get(id).click())
       });
@@ -32,6 +33,7 @@ describe('My First Test', function() {
          cy.get('div.tier').should('have.length', 4).eq(1).find('.pricing-button').click()
          });
 
+         cy.wait(1000);
          cy.get('.swal2-popup').should('be.visible');
          const listOfIds = ['#accept-terms', '#accept-subs'];
          listOfIds.forEach(id => cy.get(id).click());
