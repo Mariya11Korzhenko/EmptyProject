@@ -52,13 +52,6 @@ pipeline {
             sh "npm run e2e:record:parallel"
           }
         }
-        // third tester runs the same command
-         stage('tester C') {
-         steps {
-         echo "Running build ${env.BUILD_ID}"
-         sh "npm run e2e:record:parallel"
-          }
-        }
       }
     }
   }
