@@ -27,7 +27,7 @@ describe('Add New Item to Todos', function () {
 
 //Verify Completed Items
         cy.get('.todo-list').within(() => {
-        cy.get('li.completed').should('have.length', 3)
+        cy.get('li.completed').should('have.length', 3);
             listOfTitles.forEach(title => {
             cy.get('li.completed').contains(title);
             })

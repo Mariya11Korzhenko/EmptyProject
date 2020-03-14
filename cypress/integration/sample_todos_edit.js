@@ -14,7 +14,7 @@ describe('Todos Edit Test', function() {
 
 //Verify Entered Items
          cy.get('.todo-list').within(() => {
-         cy.get('.view').should('have.length', 3)
+         cy.get('.view').should('have.length', 3);
                 listOfTitles.forEach(title => {
                 cy.get('.view > label').contains(title);
                 })
@@ -34,7 +34,7 @@ describe('Todos Edit Test', function() {
 
 //Verify Edited Items
          cy.get('.todo-list').within(() => {
-         cy.get('.view').should('have.length', 3)
+         cy.get('.view').should('have.length', 3);
                listOfNewTitles.forEach(title => {
                cy.get('.view > label').contains(title);
                })
@@ -46,10 +46,10 @@ describe('Todos Edit Test', function() {
 
 //Verify Edited Items are displayed in the Active tab
                   cy.get('.todo-list').within(() => {
-                  cy.get('.view').should('have.length', 3)
+                  cy.get('.view').should('have.length', 3);
                         listOfNewTitles.forEach(title => {
                         cy.get('.view > label').contains(title);
                      })
              });
           });
-      })
+      });

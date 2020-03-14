@@ -1,5 +1,5 @@
-describe('Todos remove Test', function() {
-   it('Add and remove items', ()=> {
+describe('Todos remove Test', function () {
+    it('Add and remove items', () => {
 
 // Navigate
         cy.visit('http://todomvc.com/examples/react/#/');
@@ -15,9 +15,9 @@ describe('Todos remove Test', function() {
         cy.get('.todo-list').within(() => {
             cy.get('.view').should('have.length', 3);
             for (let id = 0; id < 3; id++) {
-                cy.get('.view').eq(0).find('.destroy').click({force:true});
+                cy.get('.view').eq(0).find('.destroy').click({force: true});
             }
         });
         cy.get('.todo-list').should('not.exist');
-       })
-     })
+    })
+});
